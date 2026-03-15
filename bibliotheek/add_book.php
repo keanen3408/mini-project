@@ -10,7 +10,6 @@ if(isset($_POST['submit'])){
     $genre = trim($_POST['genre']);
     $jaar = $_POST['publicatiejaar'];
 
-    // Validatie
     if(empty($titel)){
         $fouten[] = "Titel is verplicht.";
     }
@@ -29,7 +28,6 @@ if(isset($_POST['submit'])){
         $fouten[] = "Voer een geldig publicatiejaar in.";
     }
 
-    // Alleen opslaan als er geen fouten zijn
     if(empty($fouten)){
 
         $sql = "INSERT INTO boeken (titel, auteur, genre, publicatiejaar)
@@ -44,15 +42,25 @@ if(isset($_POST['submit'])){
             ':jaar' => $jaar
         ]);
 
-        echo "<p style='color:green;'>Boek succesvol toegevoegd!</p>";
+        echo "<p style='color:green; text-align:center;'>Boek succesvol toegevoegd!</p>";
     }
 }
 ?>
 
+<div style="
+width:400px;
+margin:100px auto;
+background:white;
+padding:30px;
+border-radius:10px;
+
+text-align:center;
+font-family:Arial;
+">
+
 <h2>Boek toevoegen</h2>
 
 <?php
-// Fouten tonen
 if(!empty($fouten)){
     echo "<ul style='color:red;'>";
     foreach($fouten as $fout){
@@ -65,17 +73,28 @@ if(!empty($fouten)){
 <form method="POST">
 
 Titel:<br>
-<input type="text" name="titel" value="<?= $_POST['titel'] ?? '' ?>"><br><br>
+<input type="text" name="titel" value="<?= $_POST['titel'] ?? '' ?>" style="width:90%; padding:8px;"><br><br>
 
 Auteur:<br>
-<input type="text" name="auteur" value="<?= $_POST['auteur'] ?? '' ?>"><br><br>
+<input type="text" name="auteur" value="<?= $_POST['auteur'] ?? '' ?>" style="width:90%; padding:8px;"><br><br>
 
 Genre:<br>
-<input type="text" name="genre" value="<?= $_POST['genre'] ?? '' ?>"><br><br>
+<input type="text" name="genre" value="<?= $_POST['genre'] ?? '' ?>" style="width:90%; padding:8px;"><br><br>
 
 Publicatiejaar:<br>
-<input type="number" name="publicatiejaar" value="<?= $_POST['publicatiejaar'] ?? '' ?>"><br><br>
+<input type="number" name="publicatiejaar" value="<?= $_POST['publicatiejaar'] ?? '' ?>" style="width:90%; padding:8px;"><br><br>
 
-<button type="submit" name="submit">Toevoegen</button>
+<button type="submit" name="submit" style="
+padding:10px 15px;
+background:#3498db;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+">
+Toevoegen
+</button>
 
 </form>
+
+</div>

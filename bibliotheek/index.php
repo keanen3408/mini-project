@@ -34,6 +34,7 @@ try {
 <html>
 <head>
 <title>Bibliotheek</title>
+<link rel="stylesheet" href="kleur.css">
 </head>
 <body>
 
